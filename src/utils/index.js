@@ -1,17 +1,37 @@
-const mapDBToModel = ({
+const mapAlbumsDB = ({
+    id,
+    name,
+    year,
+    songs,
+}) => ({
+    id,
+    name,
+    year,
+    songs,
+});
+
+const mapSongDB = ({
     id,
     title,
-    body,
-    tags,
-    created_at,
-    updated_at
+    year,
+    genre,
+    performer,
+    duration,
+    albumId,
 }) => ({
     id,
     title,
-    body,
-    tags,
-    createdAt: created_at,
-    updatedAt: updated_at,
+    year,
+    genre,
+    performer,
+    duration,
+    albumId,
 });
-
-module.exports = { mapDBToModel };
+const filterTitleSongByParam = (song, title) => (song.title.toLowerCase().includes(title));
+const filterPerformerSongByParam = (song, performer) => (song.performer.toLowerCase().includes(performer));
+module.exports = {
+    mapAlbumsDB,
+    mapSongDB,
+    filterPerformerSongByParam,
+    filterTitleSongByParam
+};
